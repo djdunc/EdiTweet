@@ -9,16 +9,16 @@ import time
 import json
 import sys
 
-class Counter:
-  count = 0
+#class Counter:
+#  count = 0
 
-c = Counter()
+#c = Counter()
 
 # inside a python interrupt you cannot use 'basic' types so you'll need to use
 # objects
-def test(gpio):
-  print("pin " + repr(gpio.getPin(True)) + " = " + repr(gpio.read()))
-  c.count+=1
+#def test(gpio):
+#  print("pin " + repr(gpio.getPin(True)) + " = " + repr(gpio.read()))
+#  c.count+=1
 
 def subscriberEvent(gpio):
 
