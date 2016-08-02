@@ -22,7 +22,7 @@ def test(gpio):
 
 def subscriberEvent(gpio):
 
-    with open("/arduino_notification_out.txt", "r") as f:
+    with open("climdata.txt", "r") as f:
         contents = f.read()
         print ("Message from Arduino: " + contents)
 
