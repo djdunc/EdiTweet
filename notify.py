@@ -24,7 +24,7 @@ def subscriberEvent(gpio):
 	if repr(gpio.read()):
 		with open("climdata.txt", "r") as f:
 			contents = f.read()
-			print ("Message from Arduino: " + contents)
+			print ("gpio read:" + repr(gpio.read()) + " Message from Arduino: " + contents)
 
 pin = 1;
 
