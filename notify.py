@@ -23,9 +23,11 @@ def subscriberEvent():
 #/**********Read notification from arduino*************/
 subscriber_pin = mraa.Gpio(1)
 subscriber_pin.dir(mraa.DIR_IN)
-subscriber_pin.isr(mraa.EDGE_RISING, subscriberEvent) 
+subscriber_pin.isr(mraa.EDGE_RISING, subscriberEvent, subscriber_pin) 
 
-notifier_pin = mraa.Gpio(5);
-notifier_pin.dir(mraa.DIR_OUT);
+#notifier_pin = mraa.Gpio(5)
+#notifier_pin.dir(mraa.DIR_OUT)
+
+while True:
 
 
