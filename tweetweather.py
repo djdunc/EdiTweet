@@ -23,18 +23,14 @@ auth.set_access_token(access_token, access_token_secret)
 # Creation of the actual interface, using authentication
 api = tweepy.API(auth)
 
- 
-while True:
     
 if len(sys.argv) >= 2:
-    tweet_text = sys.argv[1]
+	tweet_text = sys.argv[1]
 
 else:
 	with open("/home/root/climdata.txt", "r") as f:
-		contents = f.read()
-		print (" Message from Arduino: " + contents)
-
-    tweet_text = contents
+		tweet_text = f.read()
+		print (" Message from Arduino: " + tweet_text)
 
 if len(tweet_text) <= 140:
     api.update_status(status=tweet_text)
