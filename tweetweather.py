@@ -13,6 +13,8 @@
 
 import tweepy
 import sys
+import time
+
 # Consumer keys and access tokens, used for OAuth
 from settings import *
 
@@ -23,17 +25,18 @@ auth.set_access_token(access_token, access_token_secret)
 # Creation of the actual interface, using authentication
 api = tweepy.API(auth)
 
-    
-if len(sys.argv) >= 2:
-	tweet_text = sys.argv[1]
+starttime=time.time()
+while True:
+    if len(sys.argv) >= 2:
+    	tweet_text = sys.argv[1]
+    else:
+    	with open("/home/root/climdata.txt", "r") as f:
+    		tweet_text = f.read()
+    		print (" Message from Arduino: " + tweet_text)
 
-else:
-	with open("/home/root/climdata.txt", "r") as f:
-		tweet_text = f.read()
-		print (" Message from Arduino: " + tweet_text)
+    if len(tweet_text) <= 140:
+    	api.update_status(status=tweet_text)
+    else:
+    	print "tweet not sent. Too long. 140 chars Max."
 
-if len(tweet_text) <= 140:
-    api.update_status(status=tweet_text)
-else:
-    print "tweet not sent. Too long. 140 chars Max."
-
+    time.sleep(300.0 - ((time.time() - starttime) % 300.0))
